@@ -1,14 +1,11 @@
 #!/bin/sh
 
-
-if [[ $1 = 'start' ]]
-then
-   sudo lsof -t -i tcp:8000 | xargs kill -9
-   python manage.py runserver
+if [[ $1 == 'start' ]]; then
+  sudo lsof -t -i tcp:8000 | xargs kill -9
+  python manage.py runserver
 fi
 
-if [[ $1 = 'init' ]]
-then
+if [[ $1 == 'init' ]]; then
   python -m venv .venv
   # shellcheck disable=SC2039
   source ./.venv/bin/activate
@@ -22,8 +19,7 @@ then
   python manage.py runserver
 fi
 
-if [[ $1 = 'stop' ]]
-then
-   sudo lsof -t -i tcp:8000 | xargs kill -9
-   sudo lsof -t -i tcp:5432 | xargs kill -9
+if [[ $1 == 'stop' ]]; then
+  sudo lsof -t -i tcp:8000 | xargs kill -9
+  sudo lsof -t -i tcp:5432 | xargs kill -9
 fi

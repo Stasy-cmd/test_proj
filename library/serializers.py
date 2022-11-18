@@ -9,8 +9,9 @@ class WriterSerializer(serializers.ModelSerializer):
         read_only_fields = ('id',)
         fields = ['id', 'name']
 
+
 class BookSerializer(serializers.ModelSerializer):
-    owner = WriterSerializer()
+    owner = WriterSerializer ()
 
     class Meta:
         model = Book
